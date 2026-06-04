@@ -1,0 +1,184 @@
+================================================================
+EVIDENCIAS DE PRUEBAS - PARCIAL FINAL ESTRUCTURAS DE DATOS
+Estudiante: Juan Felipe Gonzalez | Codigo: 67064
+================================================================
+Cada ejercicio incluye:
+  - Caso 1: Normal
+  - Caso 2: Limite
+  - Caso 3: Error potencial (si la solucion esta mal, falla aqui)
+================================================================
+
+----------------------------------------------------------------
+EJERCICIO 1 - AuditoriaAcademica.java
+Comando: javac AuditoriaAcademica.java && java AuditoriaAcademica
+----------------------------------------------------------------
+
+========== CASO 1: NORMAL ==========
+
+--- Lista inicial ---
+[101, 20241001, homologacion, media, 2026-06-01, activa]
+[102, 20241002, cancelacion, alta, 2026-06-01, activa]
+[101, 20241001, homologacion, media, 2026-06-01, activa]
+[103, 20241003, supletorio, alta, 2026-06-02, cancelada]
+[104, 20241004, reingreso, baja, 2026-06-02, activa]
+[105, 20241005, validacion, alta, 2026-06-03, activa]
+
+--- Despues de eliminar duplicados ---
+[101, 20241001, homologacion, media, 2026-06-01, activa]
+[102, 20241002, cancelacion, alta, 2026-06-01, activa]
+[103, 20241003, supletorio, alta, 2026-06-02, cancelada]
+[104, 20241004, reingreso, baja, 2026-06-02, activa]
+[105, 20241005, validacion, alta, 2026-06-03, activa]
+
+--- Despues de mover prioridad alta al inicio ---
+[102, 20241002, cancelacion, alta, 2026-06-01, activa]
+[103, 20241003, supletorio, alta, 2026-06-02, cancelada]
+[105, 20241005, validacion, alta, 2026-06-03, activa]
+[101, 20241001, homologacion, media, 2026-06-01, activa]
+[104, 20241004, reingreso, baja, 2026-06-02, activa]
+
+--- Lista final depurada ---
+[102, 20241002, cancelacion, alta, 2026-06-01, activa]
+[105, 20241005, validacion, alta, 2026-06-03, activa]
+[101, 20241001, homologacion, media, 2026-06-01, activa]
+[104, 20241004, reingreso, baja, 2026-06-02, activa]
+
+========== CASO 2: LIMITE (una sola solicitud) ==========
+
+--- Lista inicial ---
+[201, 20241010, reingreso, alta, 2026-06-01, activa]
+
+--- Despues de eliminar duplicados ---
+[201, 20241010, reingreso, alta, 2026-06-01, activa]
+
+--- Despues de mover prioridad alta al inicio ---
+[201, 20241010, reingreso, alta, 2026-06-01, activa]
+
+--- Lista final depurada ---
+[201, 20241010, reingreso, alta, 2026-06-01, activa]
+
+========== CASO 3: ERROR POTENCIAL (todas duplicadas y canceladas) ==========
+
+--- Lista inicial ---
+[301, 20241020, supletorio, alta, 2026-06-01, cancelada]
+[301, 20241020, supletorio, alta, 2026-06-01, cancelada]
+[302, 20241021, validacion, media, 2026-06-01, cancelada]
+
+--- Despues de eliminar duplicados ---
+[301, 20241020, supletorio, alta, 2026-06-01, cancelada]
+[302, 20241021, validacion, media, 2026-06-01, cancelada]
+
+--- Despues de mover prioridad alta al inicio ---
+[301, 20241020, supletorio, alta, 2026-06-01, cancelada]
+[302, 20241021, validacion, media, 2026-06-01, cancelada]
+
+--- Lista final depurada ---
+(lista vacia)
+
+>> RESULTADO: Los 3 casos pasan correctamente. OK
+
+----------------------------------------------------------------
+EJERCICIO 2 - ValidadorTrazas.java
+Comando: javac ValidadorTrazas.java && java ValidadorTrazas
+----------------------------------------------------------------
+
+========== CASO 1: NORMAL (traza valida) ==========
+Procesando traza...
+
+OK ABRIR_PREGUNTA(1) -> contexto activo: pregunta 1
+OK RESPONDER(1) -> responde correctamente a pregunta 1
+OK GUARDAR(1) -> guardado en contexto de pregunta 1
+OK ABRIR_PREGUNTA(2) -> contexto activo: pregunta 2
+OK RESPONDER(2) -> responde correctamente a pregunta 2
+OK VOLVER -> sale de pregunta 2, contexto anterior: pregunta 1
+OK ENVIAR -> traza finalizada.
+
+TRAZA VALIDA.
+
+========== CASO 2: LIMITE (traza minima, solo ABRIR y ENVIAR) ==========
+Procesando traza...
+
+OK ABRIR_PREGUNTA(1) -> contexto activo: pregunta 1
+OK ENVIAR -> traza finalizada.
+
+TRAZA VALIDA.
+
+========== CASO 3: ERROR POTENCIAL (responder pregunta incorrecta) ==========
+Procesando traza...
+
+OK ABRIR_PREGUNTA(1) -> contexto activo: pregunta 1
+OK ABRIR_PREGUNTA(2) -> contexto activo: pregunta 2
+INVALIDO: Se intenta responder pregunta 1 pero el contexto activo es la pregunta 2.
+
+>> RESULTADO: Los 3 casos pasan correctamente. OK
+
+----------------------------------------------------------------
+EJERCICIO 4 - AsignacionSalas.java
+Comando: javac AsignacionSalas.java && java AsignacionSalas
+----------------------------------------------------------------
+
+========== CASO 1: NORMAL (solucion existe) ==========
+Asignacion encontrada:
+  Evaluacion EDA  -> Sala A101
+  Evaluacion BD   -> Sala A102
+  Evaluacion CALC -> Sala B201
+
+========== CASO 2: LIMITE (una evaluacion, una sala) ==========
+Asignacion encontrada:
+  Evaluacion MATE -> Sala C101
+
+========== CASO 3: ERROR POTENCIAL (3 evaluaciones, 2 salas, misma franja) ==========
+No existe una asignacion valida.
+
+>> RESULTADO: Los 3 casos pasan correctamente. OK
+
+----------------------------------------------------------------
+EJERCICIO 3 - ProcesadorAcademico.java
+Comando: javac ProcesadorAcademico.java && java ProcesadorAcademico
+----------------------------------------------------------------
+
+========== CASO 1: NORMAL (ejemplo del enunciado) ==========
+
+-- Estructura completa --
+Programa: Ingenieria
+  Semestre: Semestre 1
+    Curso: Programacion
+      Unidad: Introduccion
+        Actividad: Taller 1
+        Actividad: Quiz 1
+    Curso: Matematicas
+      Unidad: Funciones
+        Actividad: Taller 2
+
+-- Total de actividades: 3
+-- Profundidad maxima: 5 niveles
+-- Buscar 'Quiz 1': true
+-- Buscar 'Parcial': false
+
+========== CASO 2: LIMITE (un solo nodo, profundidad minima) ==========
+
+-- Estructura completa --
+Programa: Programa Minimo
+  Actividad: Unica Actividad
+
+-- Total de actividades: 1
+-- Profundidad maxima: 2 niveles
+-- Buscar 'Unica Actividad': true
+
+========== CASO 3: ERROR POTENCIAL (programa sin subcomponentes) ==========
+
+-- Estructura completa --
+Programa: Programa Vacio
+
+-- Total de actividades: 0
+-- Profundidad maxima: 1 niveles
+-- Buscar 'Taller 1': false
+
+>> RESULTADO: Los 3 casos pasan correctamente. OK
+
+================================================================
+NOTAS:
+- Todas las pruebas ejecutadas en IntelliJ IDEA con Java 17.
+- No se usaron librerias externas. Solo clases del JDK estandar.
+- Los tres archivos compilan sin errores ni advertencias.
+================================================================
